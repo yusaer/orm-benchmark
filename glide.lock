@@ -1,0 +1,52 @@
+hash: 93e54e144ab2f490e6f0a9c01cdceb106305d6535d179be8618b5c4c40890870
+updated: 2016-06-17T10:10:39.70921034+09:00
+imports:
+- name: github.com/astaxie/beego
+  version: 88c5dfa6ead42e624c2e7d9e04eab6cb2d07412a
+  subpackages:
+  - orm
+- name: github.com/coocood/qbs
+  version: fd3760a61793dd4333e0c29ce9856cff9e4a7323
+- name: github.com/eaigner/hood
+  version: ca2c4bd5f4dd4e826d458112c5e3bf6d30a48162
+- name: github.com/eaigner/jet
+  version: ae59b2cccfe3fa2b9fea87ccc0fa3d8b7d89bd84
+- name: github.com/go-xorm/core
+  version: edde1c5ab80e3cda107f6b93af6df894caba41ea
+- name: github.com/go-xorm/xorm
+  version: 8150bebe6a68d3e86a14e3aa0cbac4873c05131d
+- name: github.com/gocraft/dbr
+  version: 78b5b74da0b8bcbe167cc4c55d3383b6893848c3
+  subpackages:
+  - dialect
+- name: github.com/jinzhu/gorm
+  version: 18917d1f3e17cd084b7e3d7bc013d226133e2a2b
+- name: github.com/jinzhu/inflection
+  version: 3272df6c21d04180007eb3349844c89a3856bc25
+- name: github.com/jmoiron/modl
+  version: 99654d091ece9b281eec23c9e6fe9ff960e1baa1
+- name: github.com/jmoiron/sqlx
+  version: bdae0c3219c3bdb92f3d7c70825018712787c933
+  subpackages:
+  - reflectx
+- name: github.com/lib/pq
+  version: ee1442bda7bd1b6a84e913bdb421cb1874ec629d
+  subpackages:
+  - oid
+- name: github.com/naoina/genmai
+  version: c00e6703a1503c09dca12048bf17961b13511c0f
+- name: github.com/naoina/go-stringutil
+  version: 6b638e95a32d0c1131db0e7fe83775cbea4a0d0b
+- name: gopkg.in/bsm/ratelimit.v1
+  version: db14e161995a5177acef654cb0dd785e8ee8bc22
+- name: gopkg.in/gorp.v1
+  version: c87af80f3cc5036b55b83d77171e156791085e2e
+- name: gopkg.in/pg.v4
+  version: 1f0460ec2adcd19b3385fe8ae13a0daa0fc080d0
+  subpackages:
+  - internal
+  - internal/pool
+  - orm
+  - types
+  - internal/parser
+devImports: []
