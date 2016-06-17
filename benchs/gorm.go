@@ -51,10 +51,7 @@ func GormUpdate(b *B) {
 	})
 
 	for i := 0; i < b.N; i++ {
-		if err := gormdb.Update(&m); err != nil {
-			fmt.Println(err)
-			b.FailNow()
-		}
+		gormdb.Save(&m);
 	}
 }
 
@@ -67,10 +64,7 @@ func GormRead(b *B) {
 	})
 
 	for i := 0; i < b.N; i++ {
-		if err := gormdb.Select(&m); err != nil {
-			fmt.Println(err)
-			b.FailNow()
-		}
+		gormdb.Select(&m)
 	}
 }
 
@@ -87,10 +81,6 @@ func GormReadSlice(b *B) {
 
 	for i := 0; i < b.N; i++ {
 		var models []*Model
-
-		if err := gormdb.Where("id > ?", 0).Limit(100).Find(&models); err != nil {
-			fmt.Println(err)
-			b.FailNow()
-		}
+		gormdb.Where("id > ?", 0).Limit(100).Find(&models)
 	}
 }

@@ -161,7 +161,8 @@ func RawRead(b *B) {
 
 	for i := 0; i < b.N; i++ {
 		var mout Model
-		err := stmt.QueryRow(m.Id).Scan(
+		err := stmt.QueryRow(1).Scan(
+			//err := stmt.QueryRow(m.Id).Scan(
 			&mout.Id,
 			&mout.Name,
 			&mout.Title,
