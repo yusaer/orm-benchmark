@@ -2,6 +2,7 @@ package benchs
 
 import (
 	"fmt"
+
 	"gopkg.in/pg.v4"
 )
 
@@ -42,7 +43,21 @@ func PgInsert(b *B) {
 }
 
 func PgInsertMulti(b *B) {
-	panic(fmt.Errorf("Not support multi insert"))
+	var ms []*Model
+	wrapExecute(b, func() {
+		initDB()
+	})
+
+	for i := 0; i < b.N; i++ {
+		ms = make([]*Model, 0, 100)
+		for i := 0; i < 100; i++ {
+			ms = append(ms, NewModel())
+		}
+		if err := pgdb.Create(&ms); err != nil {
+			fmt.Println(err)
+			b.FailNow()
+		}
+	}
 }
 
 func PgUpdate(b *B) {
