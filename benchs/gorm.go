@@ -34,7 +34,11 @@ func GormInsert(b *B) {
 
 	for i := 0; i < b.N; i++ {
 		m.Id = 0
-		gormdb.Create(&m)
+		d := gormdb.Create(&m)
+		if d.Error != nil {
+			fmt.Println(d.Error)
+			b.FailNow()
+		}
 	}
 }
 
@@ -47,11 +51,19 @@ func GormUpdate(b *B) {
 	wrapExecute(b, func() {
 		initDB()
 		m = NewModel()
-		gormdb.Create(&m)
+		d := gormdb.Create(&m)
+		if d.Error != nil {
+			fmt.Println(d.Error)
+			b.FailNow()
+		}
 	})
 
 	for i := 0; i < b.N; i++ {
-		gormdb.Save(&m);
+		d := gormdb.Save(&m)
+		if d.Error != nil {
+			fmt.Println(d.Error)
+			b.FailNow()
+		}
 	}
 }
 
@@ -60,11 +72,18 @@ func GormRead(b *B) {
 	wrapExecute(b, func() {
 		initDB()
 		m = NewModel()
-		gormdb.Create(&m)
+		d := gormdb.Create(&m)
+		if d.Error != nil {
+			fmt.Println(d.Error)
+			b.FailNow()
+		}
 	})
-
 	for i := 0; i < b.N; i++ {
-		gormdb.Select(&m)
+		d := gormdb.Find(&m)
+		if d.Error != nil {
+			fmt.Println(d.Error)
+			b.FailNow()
+		}
 	}
 }
 
@@ -75,12 +94,21 @@ func GormReadSlice(b *B) {
 		m = NewModel()
 		for i := 0; i < 100; i++ {
 			m.Id = 0
-			gormdb.Create(&m)
+			d := gormdb.Create(&m)
+			if d.Error != nil {
+				fmt.Println(d.Error)
+				b.FailNow()
+			}
 		}
 	})
 
 	for i := 0; i < b.N; i++ {
 		var models []*Model
 		gormdb.Where("id > ?", 0).Limit(100).Find(&models)
+		d := gormdb.Where("id > ?", 0).Limit(100).Find(&models)
+		if d.Error != nil {
+			fmt.Println(d.Error)
+			b.FailNow()
+		}
 	}
 }
