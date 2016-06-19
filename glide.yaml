@@ -3,15 +3,9 @@ import:
 - package: github.com/astaxie/beego
   subpackages:
   - orm
-- package: github.com/coocood/qbs
-- package: github.com/eaigner/hood
-- package: github.com/eaigner/jet
 - package: github.com/go-xorm/xorm
 - package: github.com/gocraft/dbr
-  subpackages:
-  - dialect
 - package: github.com/jinzhu/gorm
-- package: github.com/jmoiron/modl
 - package: github.com/jmoiron/sqlx
 - package: github.com/lib/pq
 - package: github.com/naoina/genmai
