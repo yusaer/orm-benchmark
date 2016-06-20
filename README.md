@@ -35,8 +35,16 @@ orm-benchmark -multi=20 -orm=xorm
 
 ### Reports
 
+左から
+
+* ORM名
+* 総実行時間（少ないほど良い）
+* １回の実行にかかった時間（少ないほど良い）
+* 実行ごとに割り当てられたメモリのサイズ（少ないほど良い）
+* １回の実行でメモリアロケーション（メモリ割り当て/配分）が行われた回数（少ないほど良い）
+
 #### First time
- 
+
 ```
  40000 times - Insert
         pg:    28.11s       702699 ns/op     680 B/op     17 allocs/op
@@ -115,9 +123,9 @@ orm-benchmark -multi=20 -orm=xorm
 
 ### Another environment.
 
-Mac OS X Yosemite 10.10.5
-2.5 GHz Intel Core i5
-16GB 1600MHz DDR3
+* Mac OS X Yosemite 10.10.5
+* 2.5 GHz Intel Core i5
+* 16GB 1600MHz DDR3
 
 #### First time
 
