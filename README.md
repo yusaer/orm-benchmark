@@ -35,7 +35,7 @@ orm-benchmark -multi=20 -orm=xorm
 
 ### Reports
 
-#### Sample 1
+#### First time
  
 ```
  40000 times - Insert
@@ -74,7 +74,7 @@ orm-benchmark -multi=20 -orm=xorm
       gorm:    197.95s      4948706 ns/op  628190 B/op  17018 allocs/op
 ```
  
-#### Sample 2
+#### Second time
  
 ```
  40000 times - Insert
@@ -111,4 +111,88 @@ orm-benchmark -multi=20 -orm=xorm
       xorm:    57.09s      1427295 ns/op    3169 B/op     80 allocs/op
  beego_orm:    63.73s      1593203 ns/op   91154 B/op   4601 allocs/op
       gorm:    209.57s      5239374 ns/op  628185 B/op  17018 allocs/op
+```
+
+### Another environment.
+
+Mac OS X Yosemite 10.10.5
+2.5 GHz Intel Core i5
+16GB 1600MHz DDR3
+
+#### First time
+
+```
+ 40000 times - Insert
+       raw:    31.12s       778024 ns/op     568 B/op     25 allocs/op
+        pg:    35.09s       877176 ns/op     746 B/op     17 allocs/op
+      xorm:    47.64s      1190920 ns/op    4050 B/op    116 allocs/op
+ beego_orm:    50.80s      1270017 ns/op    2713 B/op     78 allocs/op
+      gorm:    84.36s      2108979 ns/op    8125 B/op    189 allocs/op
+
+ 10000 times - MultiInsert 100 row
+        pg:    41.00s      4099767 ns/op   15164 B/op    317 allocs/op
+       raw:    43.40s      4339534 ns/op  115809 B/op   1529 allocs/op
+ beego_orm:    50.50s      5049734 ns/op  176684 B/op   3264 allocs/op
+      xorm:    65.46s      6545607 ns/op 2373346 B/op   8095 allocs/op
+      gorm:     Not support multi insert
+
+ 40000 times - Update
+       raw:    11.56s       289081 ns/op     568 B/op     28 allocs/op
+        pg:    48.30s      1207478 ns/op     608 B/op     11 allocs/op
+      xorm:    49.56s      1238995 ns/op    4178 B/op    138 allocs/op
+ beego_orm:    66.21s      1655274 ns/op    2281 B/op     71 allocs/op
+      gorm:    84.11s      2102763 ns/op    8253 B/op    209 allocs/op
+
+ 80000 times - Read
+       raw:    25.65s       320640 ns/op     896 B/op     29 allocs/op
+        pg:    30.32s       378952 ns/op     960 B/op     38 allocs/op
+ beego_orm:    65.18s       814704 ns/op    3081 B/op    108 allocs/op
+      xorm:    75.87s       948316 ns/op    7813 B/op    241 allocs/op
+      gorm:    75.89s       948676 ns/op    8196 B/op    194 allocs/op
+
+ 40000 times - MultiRead limit 100
+      xorm:    32.75s       818868 ns/op    3265 B/op     82 allocs/op
+       raw:    55.66s      1391485 ns/op   36561 B/op   1509 allocs/op
+        pg:    64.12s      1603056 ns/op   25394 B/op    942 allocs/op
+ beego_orm:    85.69s      2142218 ns/op   91159 B/op   4601 allocs/op
+      gorm:    262.57s      6564279 ns/op  628239 B/op  17019 allocs/op
+```
+
+#### Second time
+
+```
+ 40000 times - Insert
+       raw:    28.57s       714132 ns/op     568 B/op     25 allocs/op
+        pg:    34.95s       873690 ns/op     680 B/op     17 allocs/op
+      xorm:    45.54s      1138420 ns/op    4050 B/op    116 allocs/op
+ beego_orm:    60.91s      1522682 ns/op    2713 B/op     78 allocs/op
+      gorm:    77.55s      1938706 ns/op    8190 B/op    189 allocs/op
+
+ 10000 times - MultiInsert 100 row
+       raw:    40.89s      4088782 ns/op  115809 B/op   1529 allocs/op
+        pg:    42.50s      4249919 ns/op   15164 B/op    317 allocs/op
+ beego_orm:    48.39s      4839005 ns/op  176683 B/op   3264 allocs/op
+      xorm:    64.71s      6470947 ns/op 2373252 B/op   8094 allocs/op
+      gorm:     Not support multi insert
+
+ 40000 times - Update
+       raw:    10.63s       265667 ns/op     568 B/op     28 allocs/op
+        pg:    51.84s      1295906 ns/op     608 B/op     11 allocs/op
+      xorm:    64.63s      1615842 ns/op    4177 B/op    138 allocs/op
+ beego_orm:    64.95s      1623816 ns/op    2281 B/op     71 allocs/op
+      gorm:    86.03s      2150721 ns/op    8253 B/op    209 allocs/op
+
+ 80000 times - Read
+       raw:    22.54s       281776 ns/op     896 B/op     29 allocs/op
+        pg:    37.49s       468683 ns/op     960 B/op     38 allocs/op
+      xorm:    84.79s      1059842 ns/op    7812 B/op    241 allocs/op
+ beego_orm:    86.27s      1078420 ns/op    3081 B/op    108 allocs/op
+      gorm:    87.23s      1090387 ns/op    8196 B/op    194 allocs/op
+
+ 40000 times - MultiRead limit 100
+      xorm:    38.86s       971585 ns/op    3265 B/op     82 allocs/op
+       raw:    47.20s      1179997 ns/op   36561 B/op   1509 allocs/op
+        pg:    68.46s      1711417 ns/op   25394 B/op    942 allocs/op
+ beego_orm:    76.58s      1914539 ns/op   91157 B/op   4601 allocs/op
+      gorm:    251.53s      6288155 ns/op  628245 B/op  17019 allocs/op
 ```
