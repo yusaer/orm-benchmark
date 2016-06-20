@@ -99,7 +99,6 @@ func BeegoOrmInsertMulti(b *B) {
 	var ms []*BeegoModel
 	wrapExecute(b, func() {
 		initDB3()
-
 		ms = make([]*BeegoModel, 0, 100)
 		for i := 0; i < 100; i++ {
 			ms = append(ms, NewBeegoModel())
@@ -119,7 +118,10 @@ func BeegoOrmUpdate(b *B) {
 	wrapExecute(b, func() {
 		initDB3()
 		m = NewBeegoModel()
-		bo.Insert(m)
+		if _, err := bo.Insert(m); err != nil {
+			fmt.Println(err)
+			b.FailNow()
+		}
 	})
 
 	for i := 0; i < b.N; i++ {
@@ -135,7 +137,10 @@ func BeegoOrmRead(b *B) {
 	wrapExecute(b, func() {
 		initDB3()
 		m = NewBeegoModel()
-		bo.Insert(m)
+		if _, err := bo.Insert(m); err != nil {
+			fmt.Println(err)
+			b.FailNow()
+		}
 	})
 
 	for i := 0; i < b.N; i++ {

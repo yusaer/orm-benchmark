@@ -100,7 +100,6 @@ func XormInsertMulti(b *B) {
 	var ms []*XormModel
 	wrapExecute(b, func() {
 		initDB2()
-
 		ms = make([]*XormModel, 0, 100)
 		for i := 0; i < 100; i++ {
 			ms = append(ms, NewXormModel())
@@ -119,7 +118,10 @@ func XormUpdate(b *B) {
 	wrapExecute(b, func() {
 		initDB2()
 		m = NewXormModel()
-		xo.Insert(m)
+		if _, err := xo.Insert(m); err != nil {
+			fmt.Println(err)
+			b.FailNow()
+		}
 	})
 
 	for i := 0; i < b.N; i++ {
@@ -135,7 +137,10 @@ func XormRead(b *B) {
 	wrapExecute(b, func() {
 		initDB2()
 		m = NewXormModel()
-		xo.Insert(m)
+		if _, err := xo.Insert(m); err != nil {
+			fmt.Println(err)
+			b.FailNow()
+		}
 	})
 
 	for i := 0; i < b.N; i++ {

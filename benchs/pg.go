@@ -65,7 +65,10 @@ func PgUpdate(b *B) {
 	wrapExecute(b, func() {
 		initDB()
 		m = NewModel()
-		pgdb.Create(&m)
+		if err := pgdb.Create(&m); err != nil {
+			fmt.Println(err)
+			b.FailNow()
+		}
 	})
 
 	for i := 0; i < b.N; i++ {
@@ -81,7 +84,10 @@ func PgRead(b *B) {
 	wrapExecute(b, func() {
 		initDB()
 		m = NewModel()
-		pgdb.Create(&m)
+		if err := pgdb.Create(&m); err != nil {
+			fmt.Println(err)
+			b.FailNow()
+		}
 	})
 
 	for i := 0; i < b.N; i++ {
@@ -108,7 +114,6 @@ func PgReadSlice(b *B) {
 
 	for i := 0; i < b.N; i++ {
 		var models []*Model
-
 		if err := pgdb.Model(&models).Where("id > ?", 0).Limit(100).Select(); err != nil {
 			fmt.Println(err)
 			b.FailNow()
